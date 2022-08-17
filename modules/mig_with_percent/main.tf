@@ -190,6 +190,10 @@ resource "google_compute_health_check" "https" {
     response     = var.health_check["response"]
     proxy_header = var.health_check["proxy_header"]
   }
+
+  log_config {
+    enable = lookup(var.health_check, "enable_log", null)
+  }
 }
 
 resource "google_compute_health_check" "http" {
@@ -209,6 +213,10 @@ resource "google_compute_health_check" "http" {
     response     = var.health_check["response"]
     proxy_header = var.health_check["proxy_header"]
   }
+
+  log_config {
+    enable = lookup(var.health_check, "enable_log", null)
+  }
 }
 
 resource "google_compute_health_check" "tcp" {
@@ -226,5 +234,9 @@ resource "google_compute_health_check" "tcp" {
     request      = var.health_check["request"]
     response     = var.health_check["response"]
     proxy_header = var.health_check["proxy_header"]
+  }
+
+  log_config {
+    enable = lookup(var.health_check, "enable_log", null)
   }
 }
