@@ -124,6 +124,7 @@ variable "health_check" {
     request_path        = string
     host                = string
     enable_log          = bool
+    self_link           = string
   })
   default = {
     type                = ""
@@ -139,6 +140,7 @@ variable "health_check" {
     request_path        = "/"
     host                = ""
     enable_log          = false
+    self_link           = ""
   }
 }
 

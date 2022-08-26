@@ -17,11 +17,12 @@
 {{ autogeneration_note }}
 
 locals {
-  healthchecks = concat(
+  healthchecks = compact(concat(
+    [var.health_check.self_link],
     google_compute_health_check.https.*.self_link,
     google_compute_health_check.http.*.self_link,
     google_compute_health_check.tcp.*.self_link,
-  )
+  ))
   distribution_policy_zones_base = {
     default = data.google_compute_zones.available.names
     user    = var.distribution_policy_zones
